@@ -1,0 +1,27 @@
+{
+  "name": "playwright-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test  --project=webkit",
+    "test:all": "playwright test --project=chromium --project=webkit --project=firefox",
+    "test": "npx playwright test --ui",
+    "test:headed": "npx playwright test --project=chromium --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:api": "npx playwright test testsuite/api.spec.ts --project=chromium ",
+    "eslint": "npx eslint ."
+  },
+  "author": "Felipe Almeida da Silva",
+  "license": "ISC",
+  "description": "Automation test using playwright",
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.14.1",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.25.1",
+    "typescript-eslint": "^8.31.0"
+  }
+}
