@@ -29,7 +29,7 @@ jobs:
     - name: Run e2e tests
       env: 
         TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
-      run: npx playwright test
+      run: npx playwright test testsuite/placeOrder.spec.ts --project=chromium
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

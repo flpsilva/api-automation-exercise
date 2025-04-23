@@ -10,7 +10,8 @@
     "test": "npx playwright test --ui",
     "test:headed": "npx playwright test --project=chromium --headed",
     "test:debug": "npx playwright test --debug",
-    "test:api": "npx playwright test testsuite/api.spec.ts --project=chromium ",
+    "test:api": "npx playwright test testsuite/api.spec.ts --project=chromium",
+    "test:e2e": "npx playwright test testsuite/placeOrder.spec.ts --project=chromium",
     "eslint": "npx eslint ."
   },
   "author": "Felipe Almeida da Silva",
