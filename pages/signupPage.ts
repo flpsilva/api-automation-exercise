@@ -35,7 +35,7 @@ export default class SignupPage{
     createAccountBtn = () => this.page.locator('button[data-qa="create-account"]');
     //--- Methods ---
     public async fillOutAllNewUserInfo(expectedName: string, expectedEmail: string, userData: UserData) {
-        const userPassword = process.env.TEST_USER_PASSWORD;
+        const userPassword = process.env.TEST_USER_PASSWORD || "T35t3nv1r0m3nt";
         await expect(this.promptMessage()).toBeVisible();
         await this.genderTitleMr().check();
         const actualName  = await this.name().inputValue();
