@@ -4,6 +4,9 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+env:
+  BASE_URL: https://automationexercise.com/
+  SECONDARY_BASE_URL: https://test.utomationexercise.com/
 jobs:
   test:
     timeout-minutes: 60
@@ -17,7 +20,15 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
+    - name: Run api tests
+      env:
+        TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }} 
+        INV_USER_EMAIL: ${{ secrets.INV_USER_EMAIL }}
+        INV_USER_PWD: ${{ secrets.INV_USER_PWD }}
+      run: npx playwright test testsuite/api.spec.ts --project=chromium
+    - name: Run e2e tests
+      env: 
+        TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}

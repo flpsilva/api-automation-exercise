@@ -16,7 +16,7 @@ test.describe("Verify Login test suite", async () => {
   const userPwd = process.env.TEST_USER_PASSWORD;
   const InvalidUserEmail = process.env.INV_USER_EMAIL;
   const invalidPwd = process.env.INV_USER_PWD;
-  const baseURL = process.env.BASE_URL || "https://automationexercise.com/";
+  const baseURL = process.env.BASE_URL;
   
   test('Verify Login with valid details', async ({ request }) => {
     const createAccountresponse = await request.post(`${baseURL}api/createAccount`, {
