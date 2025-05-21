@@ -55,7 +55,7 @@ export default class SignupPage{
         await this.company().fill(userData.company);
         await this.address1().fill(userData.address1);
         await this.address2().fill(userData.address2);
-        await this.country().selectOption('New Zealand');
+        await this.country().selectOption(userData.country);
         await this.state().fill(userData.state);
         await this.city().fill(userData.city);
         await this.zipcode().fill(userData.zip);
