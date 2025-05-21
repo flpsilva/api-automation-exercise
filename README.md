@@ -5,57 +5,54 @@
 - Visual Studio Code (https://code.visualstudio.com/download) (or any other code editor of your choice)
 - GIT (https://git-scm.com/downloads)
 
-# Getting Started
-1. Clone the git repository: " "
-2. Install the dependencies: 
-    - run: 
-        npm init
-            Filed out values:
-            package name: <hit enter>
-            version: (1.0.0)<hit enter>
-            description: <your choice>
-            entry point: (index.js) <hit enter>
-            test command: <hit enter>
-            git repository:
-            keywords: <hit enter>
-            author: <your Name>
-            license: (ISC) <hit enter>
-            Is this OK? (yes) <yes>
+# Getting Starting:
 
-        npm install @playwright/test
-        npx playwright install
-3. install Faker for test data generations:
-    -run 
-        npm install --save-dev @faker-js/faker
-4. install eslint:
-    -run 
-        npm install --save-dev eslint
-        npx eslint --init
-    check all relevant files:
-        npx eslint . 
-    check and fix all relevant files:
-        npx eslint . --fix
+# Getting the Latest Code
 
+1. Visit https://github.com/flpsilva/api-automation-exercise
+2. Clone the project using the web URL
+ click "Code" >  select HTTPS > copy to clipboard
+3. Open your command line terminal in a folder of your choice
+ run: git clone {paste project link}
+ access the the new directory, run "dir" to check folder's name, then "cd Playwright-Automation"
+ 
 
+# Setting Up the Environment
+1. Install all project dependencies listed in package.json/package-lock.json:
+ npm ci
+2. install Playwright browsers:
+ npx playwright install --with-deps
 
+3. Create a file ".env" and add environment variables:
+ Template
+  #PlaceOrter Tests
+  TEST_USER_PASSWORD= <value>
+  #API Tests
+  INV_USER_EMAIL=<value>
+  INV_USER_PWD=<value>
+  #PW Config file
+  BASE_URL=https://automationexercise.com/
+  SECONDARY_BASE_URL=https://test.utomationexercise.com/
 
-    
-# Useful commands: 
-1. npx playwright test
-    Runs the end-to-end tests.
+# How to run the tests
 
-2. npx playwright test --ui
-    Starts the interactive UI mode.
-
-3. npx playwright test --project=chromium
-    Runs the tests only on Desktop Chrome.
-
-4. npx playwright test example
-    Runs the tests in a specific file.
-
-5. npx playwright test --debug
-    Runs the tests in debug mode.
-
-6. npx playwright codegen
-    Auto generate tests with Codegen.
-# api-automation-exercise
+Run ui tests only:
+ npm run test:e2e
+Run api tests only:
+ npm run test:api
+Run debug mode:
+ npm run test:debug
+Run test on target browser:
+ npm run test:chromium
+ npm run test:firefox
+ npm run test:webkit
+Run all tests:
+ npm run test:all
+Run headed mode:
+ npm run test:headed
+Run tests in interactive UI mode:
+ npm run test
+Run a specific test, for example:
+ npx playwright test testsuite/placeOrder.spec.ts -g "User creates an account before place an order "
+Run tests with 2 workers
+ npx playwright test --workers=2
