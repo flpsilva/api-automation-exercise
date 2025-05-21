@@ -4,4 +4,7 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   tseslint.configs.recommended,
+  {
+    ignores: ["**/playwright-report"]
+  }
 ]);
