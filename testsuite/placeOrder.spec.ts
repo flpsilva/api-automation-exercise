@@ -22,7 +22,9 @@ test.describe("Place order", async () => {
     await cartPage.clickRegisterLoginBtn();
     const newUserData = await loginPage.signupNewUser();
     const signedUpEmail = newUserData.firstName + '@failmail.com';
-    await signupPage.fillOutAllNewUserInfo(newUserData.firstName, signedUpEmail, newUserData);
+    await signupPage.fillOutAllNewUserInfo(
+      newUserData.firstName, signedUpEmail,
+      newUserData);
     await accountCreatedPage.validateAccountCreated();
     await sharedContinueBtn.click();
     await homePage.validateLoggedInUserByName(newUserData.firstName);
@@ -33,13 +35,13 @@ test.describe("Place order", async () => {
       newUserData.company, newUserData.address1,
       newUserData.address2, newUserData.city,
       newUserData.state, newUserData.zip,
-      newUserData.mobileNumber);
+      newUserData.country, newUserData.mobileNumber);
     await checkoutPage.verifyBillingAddressDetails(
       newUserData.firstName, newUserData.lastName,
       newUserData.company, newUserData.address1,
       newUserData.address2, newUserData.city,
       newUserData.state, newUserData.zip,
-      newUserData.mobileNumber);
+      newUserData.country, newUserData.mobileNumber);
     await checkoutPage.AddAndValidateCommentOrder();
     await checkoutPage.clickPlaceOrder();
     await paymentPage.addCardInfo(newUserData.firstName);
@@ -57,7 +59,9 @@ test.describe("Place order", async () => {
     await homePage.navigateToLoginPage();
     const newUserData = await loginPage.signupNewUser();
     const signedUpEmail = newUserData.firstName + '@failmail.com';
-    await signupPage.fillOutAllNewUserInfo(newUserData.firstName, signedUpEmail, newUserData);
+    await signupPage.fillOutAllNewUserInfo(
+      newUserData.firstName, signedUpEmail,
+      newUserData);
     await accountCreatedPage.validateAccountCreated();
     await sharedContinueBtn.click();
     await homePage.validateLoggedInUserByName(newUserData.firstName);
@@ -76,13 +80,13 @@ test.describe("Place order", async () => {
       newUserData.company, newUserData.address1,
       newUserData.address2, newUserData.city,
       newUserData.state, newUserData.zip,
-      newUserData.mobileNumber);
+      newUserData.country, newUserData.mobileNumber);
     await checkoutPage.verifyBillingAddressDetails(
       newUserData.firstName, newUserData.lastName,
       newUserData.company, newUserData.address1,
       newUserData.address2, newUserData.city,
       newUserData.state, newUserData.zip,
-      newUserData.mobileNumber);
+      newUserData.country, newUserData.mobileNumber);
     await checkoutPage.AddAndValidateCommentOrder();
     await checkoutPage.clickPlaceOrder();
     await paymentPage.addCardInfo(newUserData.firstName);
