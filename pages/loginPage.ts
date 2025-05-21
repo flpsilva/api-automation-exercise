@@ -13,7 +13,7 @@ export default class LoginPage{
     //--- Locators ---
     //login
     userPassword = () => this.page.locator('input[data-qa="login-password"]');
-    userEmailLogin = () => this.page.locator('input[data-qa="login-password"]');
+    userEmailLogin = () => this.page.locator('input[data-qa="login-email"]');
     loginBtn = () => this.page.locator('button[data-qa="login-button"]');
     //Signup!
     userName = () => this.page.locator('input[data-qa="signup-name"]');
