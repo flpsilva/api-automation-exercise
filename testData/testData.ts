@@ -7,6 +7,7 @@ export interface UserData {
     company: string;
     address1: string;
     address2: string;
+    country: 'India' | 'United States' | 'Canada' | 'Australia' | 'Israel' | 'New Zealand' | 'Singapore'; // Added country field with specific options
     city: string;
     state: string;
     zip: string;
@@ -19,6 +20,7 @@ export interface UserData {
 }
 //function to generate fake data
 export const generateFakeData = (): UserData => {
+    const countries: (['India', 'United States', 'Canada', 'Australia', 'Israel', 'New Zealand', 'Singapore']) = ['India', 'United States', 'Canada', 'Australia', 'Israel', 'New Zealand', 'Singapore'];
     return {
         firstName: faker.person.firstName('male'),
         lastName: faker.person.lastName(),
@@ -26,6 +28,7 @@ export const generateFakeData = (): UserData => {
         company: faker.company.name(),
         address1: faker.location.streetAddress(),
         address2: faker.location.secondaryAddress(),
+        country: faker.helpers.arrayElement(countries), // Randomly select a country
         city: faker.location.city(),
         state: faker.location.state(),
         zip: faker.location.zipCode({format: '####'}),

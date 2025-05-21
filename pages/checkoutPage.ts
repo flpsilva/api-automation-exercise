@@ -21,7 +21,7 @@ export default class CheckoutPage{
     public async clickPlaceOrder () {
         await this.PlaceOrderBtn().click();
     }
-    public async verifyDeliveryAddressDetails (firstName: string, lastName: string, companyName: string, address1: string, address2: string, city: string, state: string, zipcode: string, mobileNumber: string) {
+    public async verifyDeliveryAddressDetails (firstName: string, lastName: string, companyName: string, address1: string, address2: string, city: string, state: string, zipcode: string, mobileNumber: string, country: string) {
         const deliveryInfos = await this.deliveryAddressInfo().textContent();
         expect(deliveryInfos).toContain('Mr.'+' '+ firstName +' '+ lastName);
         expect(deliveryInfos).toContain(companyName);
@@ -29,18 +29,18 @@ export default class CheckoutPage{
         expect(deliveryInfos).toContain(address2);
         expect(deliveryInfos).toContain(city + ' ' + state);
         expect(deliveryInfos).toContain(zipcode);
-        expect(deliveryInfos).toContain('New Zealand');
+        expect(deliveryInfos).toContain(country);
         expect(deliveryInfos).toContain(mobileNumber)
     }
-    public async verifyBillingAddressDetails (firstName: string, lastName: string, companyName: string, address1: string, address2: string, city: string, state: string, zipcode: string, mobileNumber: string) {
-        const billingInfos = await this.deliveryAddressInfo().textContent();
+    public async verifyBillingAddressDetails (firstName: string, lastName: string, companyName: string, address1: string, address2: string, city: string, state: string, zipcode: string, mobileNumber: string, country: string) {
+        const billingInfos = await this.billingAddressInfo().textContent();
         expect(billingInfos).toContain('Mr.'+' '+ firstName +' '+ lastName);
         expect(billingInfos).toContain(companyName);
         expect(billingInfos).toContain(address1);
         expect(billingInfos).toContain(address2);
         expect(billingInfos).toContain(city + ' ' + state);
         expect(billingInfos).toContain(zipcode);
-        expect(billingInfos).toContain('New Zealand');
+        expect(billingInfos).toContain(country);
         expect(billingInfos).toContain(mobileNumber)
     }
     public async AddAndValidateCommentOrder () {
