@@ -31,8 +31,7 @@ test.describe("Verify Login test suite", async () => {
         zipcode: zipcode,
         state: state,
         city: city,
-        mobile_number: mobileNumber,
-        password: userPwd
+        mobile_number: mobileNumber
       }
     });
     expect(createAccountresponse.ok()).toBeTruthy();
