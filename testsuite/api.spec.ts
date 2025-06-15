@@ -7,6 +7,7 @@ test.describe("Verify Login test suite", async () => {
   const name = fakeData.firstName;
   const lastname = fakeData.lastName;
   const address1 = fakeData.address1;
+  const country = fakeData.country;
   const zipcode = fakeData.zip;
   const state = fakeData.state;
   const city = fakeData.city;
@@ -19,7 +20,7 @@ test.describe("Verify Login test suite", async () => {
   const baseURL = process.env.BASE_URL;
   
   test('Verify Login with valid details', async ({ request }) => {
-    const createAccountresponse = await request.post(`${baseURL}api/createAccount`, {
+    const createAccountResponse = await request.post(`${baseURL}api/createAccount`, {
       form: {
         name: name,
         email: randomEmail,
@@ -27,15 +28,15 @@ test.describe("Verify Login test suite", async () => {
         firstname: name,
         lastname: lastname,
         address1: address1,
-        country: 'New Zealand',
+        country: country,
         zipcode: zipcode,
         state: state,
         city: city,
         mobile_number: mobileNumber
       }
     });
-    expect(createAccountresponse.ok()).toBeTruthy();
-    const createAccountBody  = await createAccountresponse.json();
+    expect(createAccountResponse.ok()).toBeTruthy();
+    const createAccountBody  = await createAccountResponse.json();
     expect(createAccountBody .message).toBe('User created!');
 
     const response = await request.post(`${baseURL}api/verifyLogin`, {
