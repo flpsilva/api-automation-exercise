@@ -1,5 +1,5 @@
 import { Page, expect } from "@playwright/test";
-import { Helper } from "../helpers/helper";
+import { Helper } from "../utils/helper";
 
 export default class CartPage{
     //Define a page property of page

@@ -11,7 +11,7 @@ const primaryBaseURL = process.env.BASE_URL;
 //const secondaryBaseURL = process.env.SECONDARY_BASE_URL;
 
 export default defineConfig({
-  testDir: './testsuite',
+  testDir: './tests',  // UI tests
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -34,6 +34,18 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: 'api',
+      testDir: './apitests',
+      timeout: 30000,
+      expect: { timeout: 5000 },
+      use: {
+        // API-specific config if needed
+        baseURL: primaryBaseURL,
+        trace: 'on-first-retry',
+      }
+    },
+    /* Test against desktop browsers. */
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
