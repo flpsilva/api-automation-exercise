@@ -1,12 +1,12 @@
 import { test as baseTest, Locator } from "@playwright/test";
-import HomePage from '../pages/homePage';
-import CartPage from '../pages/cartPage';
-import LoginPage from '../pages/loginPage';
-import SignupPage from '../pages/signupPage';
-import AccountCreatedPage from '../pages/accountCreatedPage';
-import CheckoutPage from '../pages/checkoutPage';
-import PaymentPage from '../pages/paymentPage';
-import DeleteAccountPage from '../pages/deleteAccountPage';
+import HomePage from '../../pages/homePage';
+import CartPage from '../../pages/cartPage';
+import LoginPage from '../../pages/loginPage';
+import SignupPage from '../../pages/signupPage';
+import AccountCreatedPage from '../../pages/accountCreatedPage';
+import CheckoutPage from '../../pages/checkoutPage';
+import PaymentPage from '../../pages/paymentPage';
+import DeleteAccountPage from '../../pages/deleteAccountPage';
 
 //Define a type for the pages object that we will use to pass the page object to our tests.
 type pages = {

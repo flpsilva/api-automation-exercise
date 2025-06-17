@@ -1,4 +1,4 @@
-import { test } from '../fixture/baseTestFixtures';
+import { test } from '../tests/fixtures/baseTestFixtures';
 
 test.describe("Place order", async () => {
 

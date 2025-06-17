@@ -1,6 +1,7 @@
 
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./apiFixtures";
 import { generateFakeData } from "../testData/testData";
+
 
 test.describe("Verify Login test suite", async () => {
   const  fakeData = generateFakeData();
@@ -19,8 +20,8 @@ test.describe("Verify Login test suite", async () => {
   const invalidPwd = process.env.INV_USER_PWD;
   const baseURL = process.env.BASE_URL;
   
-  test('Verify Login with valid details', async ({ request }) => {
-    const createAccountResponse = await request.post(`${baseURL}api/createAccount`, {
+  test('Verify Login with valid details', async ({ apiContext }) => {
+    const createAccountResponse = await apiContext.post('api/createAccount', {
       form: {
         name: name,
         email: randomEmail,
@@ -39,7 +40,7 @@ test.describe("Verify Login test suite", async () => {
     const createAccountBody  = await createAccountResponse.json();
     expect(createAccountBody .message).toBe('User created!');
 
-    const response = await request.post(`${baseURL}api/verifyLogin`, {
+    const response = await apiContext.post(`${baseURL}api/verifyLogin`, {
       form: {
         email: randomEmail,
         password: userPwd
@@ -49,7 +50,7 @@ test.describe("Verify Login test suite", async () => {
     const body = await response.json();
     expect(body.message).toBe('User exists!');
     // --- Teardown
-    const deleteResponse = await request.delete(`${baseURL}api/deleteAccount`, {
+    const deleteResponse = await apiContext.delete(`${baseURL}api/deleteAccount`, {
       form: { 
         email: randomEmail,
         password: userPwd
